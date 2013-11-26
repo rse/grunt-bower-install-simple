@@ -1,0 +1,40 @@
+{
+    "name":        "grunt-bower-install-simple",
+    "homepage":    "http://github.com/rse/grunt-bower-install-simple",
+    "description": "Grunt Task for Installing Bower Dependencies",
+    "version":     "0.9.0",
+    "license":     "MIT",
+    "author": {
+        "name":    "Ralf S. Engelschall",
+        "email":   "rse@engelschall.com",
+        "url":     "http://engelschall.com"
+    },
+    "keywords": [
+        "gruntplugin",
+        "bower", "install", "dependencies"
+    ],
+    "repository": {
+        "type": "git",
+        "url":  "git://github.com/rse/grunt-bower-install-simple.git"
+    },
+    "bugs": {
+        "url":  "http://github.com/rse/grunt-bower-install-simple/issues"
+    },
+    "main": "Gruntfile.js",
+    "devDependencies": {
+        "grunt":                "~0.4.2",
+        "grunt-cli":            "~0.1.11",
+        "grunt-contrib-jshint": "~0.7.2",
+        "grunt-contrib-clean":  "~0.5.0"
+    },
+    "peerDependencies": {
+        "grunt":                "~0.4.1"
+    },
+    "dependencies": {
+        "bower":                "~1.2.7",
+        "chalk":                "~0.3.0"
+    },
+    "engines": {
+        "node":                 ">=0.10.0"
+    }
+}
