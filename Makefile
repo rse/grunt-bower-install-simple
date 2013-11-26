@@ -1,5 +1,5 @@
 ##
-##  grunt-replicate -- Grunt Task for Replicating Directories
+##  grunt-bower-install-simple -- Grunt Task for Installing Bower Dependencies
 ##  Copyright (c) 2013 Ralf S. Engelschall <rse@engelschall.com>
 ##
 ##  Permission is hereby granted, free of charge, to any person obtaining
