@@ -2,7 +2,7 @@
     "name":        "grunt-bower-install-simple",
     "homepage":    "http://github.com/rse/grunt-bower-install-simple",
     "description": "Grunt Task for Installing Bower Dependencies",
-    "version":     "0.9.0",
+    "version":     "0.9.1",
     "license":     "MIT",
     "author": {
         "name":    "Ralf S. Engelschall",
@@ -27,12 +27,12 @@
         "grunt-contrib-jshint": "~0.7.2",
         "grunt-contrib-clean":  "~0.5.0"
     },
-    "peerDependencies": {
-        "grunt":                "~0.4.1"
-    },
     "dependencies": {
         "bower":                "~1.2.7",
         "chalk":                "~0.3.0"
+    },
+    "peerDependencies": {
+        "grunt":                ">=0.4.1"
     },
     "engines": {
         "node":                 ">=0.10.0"
