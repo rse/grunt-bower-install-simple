@@ -24,9 +24,9 @@
 
 /* global module:  false */
 /* global require: false */
+/* global process: false */
 
 /*  foreign modules  */
-var process       = require("process");
 var chalk         = require("chalk");
 var bower         = require("bower");
 var bowerRenderer = require("bower/lib/renderers/StandardRenderer");
