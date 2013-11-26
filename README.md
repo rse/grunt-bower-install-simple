@@ -38,7 +38,7 @@ grunt.loadNpmTasks("grunt-bower-install-simple");
 
 - `cwd` (default `process.cwd()`): The directory from which Bower should run.
   All relative paths in Bower will be calculated according to this.
-  The equivalent of `bower --config.cwd=\`pwd\``.
+  The equivalent of `bower --config.cwd=``pwd```.
 
 - `forceLatest` (default `false`): Force latest dependency version on conflict.
   The equivalent of `bower install --force-latest`.
@@ -50,7 +50,7 @@ grunt.loadNpmTasks("grunt-bower-install-simple");
   The equivalent of `bower --config.interactive=true`.
 
 - `directory` (default `undefined`): The path in which installed components should be saved.
-  If `undefined` (or not specified) this defaults in Bower to `bower\_components`.
+  If `undefined` (or not specified) this defaults in Bower to `bower_components`.
   The equivalent of `bower --config.directory=<dir>`.
 
 ## Task Calling
