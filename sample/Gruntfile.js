@@ -12,7 +12,7 @@ module.exports = function (grunt) {
         },
         clean: {
             clean:     [ ],
-            distclean: [ "node_modules" ]
+            distclean: [ "node_modules", "lib" ]
         }
     });
 
