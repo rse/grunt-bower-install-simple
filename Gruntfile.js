@@ -33,6 +33,12 @@ module.exports = function (grunt) {
             gruntfile:   [ "Gruntfile.js" ],
             sourcefiles: [ "tasks/grunt-bower-install-simple.js" ]
         },
+        eslint: {
+            options: {
+                config: "eslint.json"
+            },
+            target: [ "tasks/grunt-bower-install-simple.js" ]
+        },
         clean: {
             clean:     [ ],
             distclean: [ "node_modules" ]
@@ -41,7 +47,8 @@ module.exports = function (grunt) {
 
     grunt.loadNpmTasks("grunt-contrib-jshint");
     grunt.loadNpmTasks("grunt-contrib-clean");
+    grunt.loadNpmTasks("grunt-eslint");
 
-    grunt.registerTask("default", [ "jshint" ]);
+    grunt.registerTask("default", [ "jshint", "eslint" ]);
 };
 
