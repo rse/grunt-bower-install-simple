@@ -1,6 +1,6 @@
 
 NPM   = npm
-GRUNT = ./node_modules/grunt-cli/bin/grunt 
+GRUNT = ./node_modules/grunt-cli/bin/grunt
 
 all: build
 
