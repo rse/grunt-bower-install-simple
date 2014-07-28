@@ -71,9 +71,18 @@ Assuming we have the following build environment:
 grunt.initConfig({
     "bower-install-simple": {
         options: {
-            color:       true,
-            production:  false,
-            directory:   "lib"
+            color: true,
+            directory: "lib"
+        },
+        "prod": {
+            options: {
+                production: true
+            }
+        },
+        "dev": {
+            options: {
+                production: false
+            }
         }
     }
 });

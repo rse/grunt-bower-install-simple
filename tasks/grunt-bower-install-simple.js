@@ -32,7 +32,7 @@ var bower         = require("bower");
 var bowerRenderer = require("bower/lib/renderers/StandardRenderer");
 
 module.exports = function (grunt) {
-    grunt.registerTask("bower-install-simple", "Install Bower Dependencies", function () {
+    grunt.registerMultiTask("bower-install-simple", "Install Bower Dependencies", function () {
         /*  prepare options  */
         var options = this.options({
             /*  bower configuration options (renderer specific)  */
@@ -51,9 +51,10 @@ module.exports = function (grunt) {
 
         /*  display header to explicitly inform user about our operation  */
         if (options.color)
-            grunt.log.writeln(chalk.green("Install Bower Dependencies"));
+            grunt.log.writeln(chalk.blue("Install Bower Dependencies") +
+                " [" + chalk.yellow.bold(this.target) + "]");
         else
-            grunt.log.writeln("Install Bower Dependencies");
+            grunt.log.writeln("Install Bower Dependencies [" + this.target + "]");
 
         /*  run programatically the functionality behind
             the official "bower install" command  */

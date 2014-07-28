@@ -5,9 +5,18 @@ module.exports = function (grunt) {
         pkg: grunt.file.readJSON("package.json"),
         "bower-install-simple": {
             options: {
-                color:       true,
-                production:  false,
-                directory:   "lib"
+                color: true,
+                directory: "lib"
+            },
+            "prod": {
+                options: {
+                    production: true
+                }
+            },
+            "dev": {
+                options: {
+                    production: false
+                }
             }
         },
         clean: {
@@ -19,6 +28,6 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks("grunt-contrib-clean");
     grunt.loadTasks("../tasks");
 
-    grunt.registerTask("default", [ "bower-install-simple" ]);
+    grunt.registerTask("default", [ "bower-install-simple:prod" ]);
 };
 
