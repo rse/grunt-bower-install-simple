@@ -62,6 +62,8 @@ Task targets, files and options may be specified according to the Grunt
 
 ## Usage Example
 
+*As of v1.0.0, bower-install-simple is now a "multitask", and must be configured accordingly.* 
+
 Assuming we have the following build environment:
 
 - `Gruntfile.js`:
@@ -70,10 +72,18 @@ Assuming we have the following build environment:
 // [...]
 grunt.initConfig({
     "bower-install-simple": {
-        options: {
-            color:       true,
-            production:  false,
-            directory:   "lib"
+        main: {
+            options: {
+                color:       true,
+                production:  true,
+                directory:   "lib"
+            }
+        },
+        test: {
+            options: {
+                production:  false,
+                directory:   "test",
+            }
         }
     }
 });
