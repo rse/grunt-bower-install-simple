@@ -67,7 +67,8 @@ module.exports = function (grunt) {
             production:     options.production
         }, {
             interactive:    options.interactive,
-            directory:      options.directory
+            directory:      options.directory,
+            cwd:            options.cwd
         })
         .on("log", function (log) {
             renderer.log(log);
