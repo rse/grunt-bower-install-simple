@@ -50,7 +50,7 @@ grunt.loadNpmTasks("grunt-bower-install-simple");
   The equivalent of `bower --config.interactive=true`.
 
 - `directory` (default `undefined`): The path in which installed components should be saved.
-  If `undefined` (or not specified) this defaults in Bower to `bower_components`.
+  This defaults to `bower_components`.
   The equivalent of `bower --config.directory=<dir>`.
 
 ## Task Calling
