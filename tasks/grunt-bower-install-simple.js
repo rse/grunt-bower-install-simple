@@ -45,7 +45,7 @@ module.exports = function (grunt) {
 
             /*  bower configuration options (general)  */
             interactive:  true,               /*  bower --config.interactive=true  */
-            directory:    undefined           /*  bower --config.directory=<dir>   */
+            directory:    "bower_components"  /*  bower --config.directory=<dir>   */
         });
         grunt.verbose.writeflags(options, "Options");
 
