@@ -53,6 +53,8 @@ grunt.loadNpmTasks("grunt-bower-install-simple");
   This defaults to `bower_components`.
   The equivalent of `bower --config.directory=<dir>`.
 
+- `update` (default `false`): Makes the plugin run `bower update` instead of `bower install`.
+
 ## Task Calling
 
 _Run this task with the `grunt bower-install-simple` command._
