@@ -67,7 +67,6 @@ module.exports = function (grunt) {
             cwd:            options.cwd
         });
 
-
         /* run bower install or update task */
         var task = options.update ? bower.commands.update : bower.commands.install;
         task([], {
