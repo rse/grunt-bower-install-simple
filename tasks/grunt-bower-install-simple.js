@@ -39,6 +39,9 @@ module.exports = function (grunt) {
             color:        true,               /*  bower --config.color=true        */
             cwd:          process.cwd(),      /*  bower --config.cwd=`pwd`         */
 
+            /*  bower task options */
+            update:       false,              /*  true to run 'bower update'       */
+
             /*  bower install command options  */
             forceLatest:  false,              /*  bower install --force-latest     */
             production:   false,              /*  bower install --production       */
@@ -63,7 +66,11 @@ module.exports = function (grunt) {
             color:          options.color,
             cwd:            options.cwd
         });
-        bower.commands.install([], {
+
+
+        /* run bower install or update task */
+        var task = options.update ? bower.commands.update : bower.commands.install;
+        task([], {
             "force-latest": options.forceLatest,
             production:     options.production
         }, {
