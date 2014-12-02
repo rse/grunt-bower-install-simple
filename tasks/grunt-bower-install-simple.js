@@ -24,7 +24,6 @@
 
 /* global module:  false */
 /* global require: false */
-/* global process: false */
 
 /*  foreign modules  */
 var chalk         = require("chalk");
@@ -32,24 +31,10 @@ var bower         = require("bower");
 var bowerRenderer = require("bower/lib/renderers/StandardRenderer");
 
 module.exports = function (grunt) {
-    grunt.registerMultiTask("bower-install-simple", "Install or Update Bower Dependencies", function () {
+    "use strict";
+    grunt.registerMultiTask("bower-install-simple", "Install Bower Dependencies", function () {
         /*  prepare options  */
-        var options = this.options({
-            /*  bower configuration options (renderer specific)  */
-            color:        true,               /*  bower --config.color=true        */
-            cwd:          process.cwd(),      /*  bower --config.cwd=`pwd`         */
-
-            /*  bower task options */
-            update:       false,              /*  true to run 'bower update'       */
-
-            /*  bower install command options  */
-            forceLatest:  false,              /*  bower install --force-latest     */
-            production:   false,              /*  bower install --production       */
-
-            /*  bower configuration options (general)  */
-            interactive:  true,               /*  bower --config.interactive=true  */
-            directory:    "bower_components"  /*  bower --config.directory=<dir>   */
-        });
+        var options = this.options({});
         grunt.verbose.writeflags(options, "Options");
 
         /*  display header to explicitly inform user about our operation  */
@@ -62,21 +47,8 @@ module.exports = function (grunt) {
         /*  run programatically the functionality behind
             the official "bower install" command  */
         var done = this.async();
-        var renderer = new bowerRenderer("install", {
-            color:          options.color,
-            cwd:            options.cwd
-        });
-
-        /* run bower install or update task */
-        var task = options.update ? bower.commands.update : bower.commands.install;
-        task([], {
-            "force-latest": options.forceLatest,
-            production:     options.production
-        }, {
-            interactive:    options.interactive,
-            directory:      options.directory,
-            cwd:            options.cwd
-        })
+        var renderer = new bowerRenderer("install", options);
+        bower.commands.install([], options, options)
         .on("log", function (log) {
             renderer.log(log);
         })
@@ -95,4 +67,5 @@ module.exports = function (grunt) {
         });
     });
 };
+
 
