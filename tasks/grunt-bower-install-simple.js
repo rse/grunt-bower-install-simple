@@ -36,47 +36,77 @@ module.exports = function (grunt) {
         /*  prepare options  */
         var options = this.options({
             /*  bower configuration options (renderer specific)  */
-            color:        true,               /*  bower --config.color=true        */
-            cwd:          process.cwd(),      /*  bower --config.cwd=`pwd`         */
+            color:        undefined,          /*  bower --config.color=<val>           */
+            cwd:          undefined,          /*  bower --config.cwd=<dir>             */
 
-            /*  bower task options */
-            update:       false,              /*  true to run 'bower update'       */
+            /*  bower command selection options  */
+            command:      "install",          /*  bower <command>                      */
 
-            /*  bower install command options  */
-            forceLatest:  false,              /*  bower install --force-latest     */
-            production:   false,              /*  bower install --production       */
+            /*  bower command argument options  */
+            forceLatest:  false,              /*  bower <command> --force-latest       */
+            production:   false,              /*  bower <command> --production         */
 
             /*  bower configuration options (general)  */
-            interactive:  true,               /*  bower --config.interactive=true  */
-            directory:    "bower_components"  /*  bower --config.directory=<dir>   */
+            interactive:  undefined,          /*  bower --config.interactive=<val>     */
+            directory:    undefined           /*  bower --config.directory=<dir>       */
         });
         grunt.verbose.writeflags(options, "Options");
 
-        /*  display header to explicitly inform user about our operation  */
-        if (options.color)
-            grunt.log.writeln(chalk.blue("Install Bower Dependencies") +
-                " [" + chalk.yellow.bold(this.target) + "]");
+        /*  sanity check option values  */
+        if (typeof options.color !== "undefined" && typeof options.color !== "boolean")
+            throw new Error("invalid type of value for option \"color\" (expected boolean)");
+        if (typeof options.cwd !== "undefined" && typeof options.cwd !== "string")
+            throw new Error("invalid type of value for option \"cwd\" (expected string)");
+        if (typeof options.command !== "undefined" && typeof options.command !== "string")
+            throw new Error("invalid type of value for option \"command\" (expected string)");
+        if (typeof bower.commands[options.command] !== "function")
+            throw new Error("invalid Bower command \"" + options.command + "\"");
+        if (typeof options.forceLatest !== "undefined" && typeof options.forceLatest !== "boolean")
+            throw new Error("invalid type of value for option \"forceLatest\" (expected boolean)");
+        if (typeof options.production !== "undefined" && typeof options.production !== "boolean")
+            throw new Error("invalid type of value for option \"production\" (expected boolean)");
+        if (typeof options.interative !== "undefined" && typeof options.interactive !== "boolean")
+            throw new Error("invalid type of value for option \"interactive\" (expected boolean)");
+        if (typeof options.directory !== "undefined" && typeof options.directory !== "string")
+            throw new Error("invalid type of value for option \"directory\" (expected string)");
+
+        /*  determine renderer options
+            (notice: provide only the real overrides to allow .bowerrc usage)
+            (notice: "cwd" has to be present to let Bower not fail)  */
+        var rendererOpts = {};
+        if (typeof options.color !== "undefined")
+            rendererOpts.color = options.color;
+        if (typeof options.cwd !== "undefined")
+            rendererOpts.cwd = options.cwd;
         else
-            grunt.log.writeln("Install Bower Dependencies [" + this.target + "]");
+            rendererOpts.cwd = process.cwd();
 
-        /*  run programatically the functionality behind
-            the official "bower install" command  */
+        /*  determine task, task arguments and task options
+            (notice: provide only the real overrides to allow .bowerrc usage)  */
+        var task = bower.commands[options.command];
+        var taskArgs = {};
+        if (options.command.match(/^(?:install|update)$/)) {
+            taskArgs["force-latest"] = options.forceLatest;
+            taskArgs.production = options.production;
+        }
+        var taskOpts = {};
+        if (typeof options.interactive !== "undefined")
+            taskOpts.interative = options.interactive;
+        if (typeof options.directory !== "undefined")
+            taskOpts.directory = options.directory;
+        if (typeof options.cwd !== "undefined")
+            taskOpts.cwd = options.cwd;
+
+        /*  display header to explicitly inform user about our Bower operation  */
+        var msg = chalk.blue("Executing Bower") + " (Command: " + chalk.green(options.command) + ")";
+        if (options.color !== true)
+            msg = chalk.stripColor(msg);
+        grunt.log.writeln(msg);
+
+        /*  programatically run the Bower functionality  */
         var done = this.async();
-        var renderer = new bowerRenderer("install", {
-            color:          options.color,
-            cwd:            options.cwd
-        });
-
-        /* run bower install or update task */
-        var task = options.update ? bower.commands.update : bower.commands.install;
-        task([], {
-            "force-latest": options.forceLatest,
-            production:     options.production
-        }, {
-            interactive:    options.interactive,
-            directory:      options.directory,
-            cwd:            options.cwd
-        })
+        var renderer = new bowerRenderer(options.command, rendererOpts);
+        task([], taskArgs, taskOpts)
         .on("log", function (log) {
             renderer.log(log);
         })
