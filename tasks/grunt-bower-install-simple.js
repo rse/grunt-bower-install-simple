@@ -32,6 +32,7 @@ var bower         = require("bower");
 var bowerRenderer = require("bower/lib/renderers/StandardRenderer");
 
 module.exports = function (grunt) {
+	"use strict";
     grunt.registerMultiTask("bower-install-simple", "Install or Update Bower Dependencies", function () {
         /*  prepare options  */
         var options = this.options({
@@ -65,7 +66,7 @@ module.exports = function (grunt) {
             throw new Error("invalid type of value for option \"forceLatest\" (expected boolean)");
         if (typeof options.production !== "undefined" && typeof options.production !== "boolean")
             throw new Error("invalid type of value for option \"production\" (expected boolean)");
-        if (typeof options.interative !== "undefined" && typeof options.interactive !== "boolean")
+        if (typeof options.interactive !== "undefined" && typeof options.interactive !== "boolean")
             throw new Error("invalid type of value for option \"interactive\" (expected boolean)");
         if (typeof options.directory !== "undefined" && typeof options.directory !== "string")
             throw new Error("invalid type of value for option \"directory\" (expected string)");
@@ -91,7 +92,7 @@ module.exports = function (grunt) {
         }
         var taskOpts = {};
         if (typeof options.interactive !== "undefined")
-            taskOpts.interative = options.interactive;
+            taskOpts.interactive = options.interactive;
         if (typeof options.directory !== "undefined")
             taskOpts.directory = options.directory;
         if (typeof options.cwd !== "undefined")
