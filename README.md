@@ -11,7 +11,8 @@ Grunt Task for Installing Bower Dependencies
 
 ## Getting Started
 
-This plugin requires Grunt `~0.4.0`
+This plugin requires Grunt `>=0.4.0` and bower `~1.4.1`. Since version x.x.x bower is not a direct dependency anymore and 
+you need to require it directly.
 
 If you haven't used [Grunt](http://gruntjs.com/)
 before, be sure to check out the [Getting
