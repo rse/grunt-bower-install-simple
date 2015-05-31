@@ -2,7 +2,6 @@
 /* global module: true */
 module.exports = function (grunt) {
     grunt.initConfig({
-        pkg: grunt.file.readJSON("package.json"),
         "bower-install-simple": {
             options: {
                 color: true,
