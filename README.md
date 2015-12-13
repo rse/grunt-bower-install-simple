@@ -100,9 +100,9 @@ grunt.registerTask("bower-install", [ "bower-install-simple" ]);
     "name": "sample",
     "version": "0.0.0",
     "devDependencies": {
-        "componentjs":    "~1.1.1",
-        "jquery":         "~2.1.1",
-        "lodash":         "~2.4.1"
+        "componentjs":    "~1.2.7",
+        "jquery":         "~2.1.4",
+        "lodash":         "~3.10.1"
     }
 }
 ```
