@@ -86,8 +86,8 @@ module.exports = function (grunt) {
         var task = bower.commands[options.command];
         var taskArgs = {};
         if (options.command.match(/^(?:install|update)$/)) {
-            taskArgs["force-latest"] = options.forceLatest;
-            taskArgs.production = options.production;
+            taskArgs.forceLatest = options.forceLatest;
+            taskArgs.production  = options.production;
         }
         var taskOpts = {};
         if (typeof options.interactive !== "undefined")
