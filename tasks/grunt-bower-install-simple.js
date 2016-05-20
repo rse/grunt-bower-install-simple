@@ -32,6 +32,7 @@ var bower         = require("bower");
 var bowerRenderer = require("bower/lib/renderers/StandardRenderer");
 
 module.exports = function (grunt) {
+	"use strict";
     grunt.registerMultiTask("bower-install-simple", "Install or Update Bower Dependencies", function () {
         /*  prepare options  */
         var options = this.options({
@@ -86,7 +87,7 @@ module.exports = function (grunt) {
         var task = bower.commands[options.command];
         var taskArgs = {};
         if (options.command.match(/^(?:install|update)$/)) {
-            taskArgs["force-latest"] = options.forceLatest;
+            taskArgs.forceLatest = options.forceLatest;
             taskArgs.production = options.production;
         }
         var taskOpts = {};
