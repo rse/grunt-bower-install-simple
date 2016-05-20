@@ -2,7 +2,7 @@
     "name":        "grunt-bower-install-simple",
     "homepage":    "http://github.com/rse/grunt-bower-install-simple",
     "description": "Grunt Task for Installing Bower Dependencies",
-    "version":     "1.2.1",
+    "version":     "1.2.2",
     "license":     "MIT",
     "author": {
         "name":    "Ralf S. Engelschall",
