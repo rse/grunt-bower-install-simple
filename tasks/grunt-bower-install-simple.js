@@ -28,6 +28,7 @@
 
 /*  foreign modules  */
 var chalk         = require("chalk");
+var stripAnsi     = require('strip-ansi');
 var bower         = require("bower");
 var bowerRenderer = require("bower/lib/renderers/StandardRenderer");
 
@@ -100,7 +101,7 @@ module.exports = function (grunt) {
         /*  display header to explicitly inform user about our Bower operation  */
         var msg = chalk.blue("Executing Bower") + " (Command: " + chalk.green(options.command) + ")";
         if (options.color !== true)
-            msg = chalk.stripColor(msg);
+            msg = stripAnsi(msg);
         grunt.log.writeln(msg);
 
         /*  programatically run the Bower functionality  */
