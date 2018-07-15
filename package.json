@@ -30,7 +30,8 @@
     },
     "dependencies": {
         "bower":                "1.8.4",
-        "chalk":                "2.4.1"
+        "chalk":                "2.4.1",
+        "strip-ansi":           "4.0.0"
     },
     "peerDependencies": {
         "grunt":                ">=0.4.0"
