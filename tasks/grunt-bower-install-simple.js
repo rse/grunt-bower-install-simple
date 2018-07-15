@@ -28,7 +28,7 @@
 
 /*  foreign modules  */
 var chalk         = require("chalk");
-var stripAnsi     = require('strip-ansi');
+var stripAnsi     = require("strip-ansi");
 var bower         = require("bower");
 var bowerRenderer = require("bower/lib/renderers/StandardRenderer");
 
