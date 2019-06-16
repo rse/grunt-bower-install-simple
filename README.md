@@ -3,6 +3,8 @@
 
 Grunt Task for Installing Bower Dependencies
 
+> ATTENTION: Bower is deprecated and obsolete! Use this Grunt task only for legacy purposes, please!
+
 <p/>
 <img src="https://nodei.co/npm/grunt-bower-install-simple.png?downloads=true&stars=true" alt=""/>
 
